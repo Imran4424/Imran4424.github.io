@@ -11,6 +11,7 @@ html, body
 	font-size: 14px;
 	font-weight: normal;
 	scroll-behavior: auto;
+	overflow: hidden;	
 }
 
 .background
@@ -21,7 +22,6 @@ html, body
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
-	overflow-y: auto;
 }
 
 .navigation
@@ -87,6 +87,8 @@ a.active, .navigation a:hover
 	/*background-color: red;*/
 	right: 0;
 	top: 20%;
+	overflow-y: auto;
+	
 }
 
 .home
@@ -124,7 +126,6 @@ a.active, .navigation a:hover
 	font-family: century gothic;
 	padding: 0 60px;
 	display: none;
-	overflow-y: auto;
 
 }
 
@@ -209,4 +210,15 @@ a.active, .navigation a:hover
 	color: green;
 	padding-bottom: 5px;
 	padding-top: 5px;
+}
+
+.projects a
+{
+	font-size: 15px;
+	font-family: Georgia;
+	font-style: bold;
+	padding-left: 150px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	color: purple;
 }
