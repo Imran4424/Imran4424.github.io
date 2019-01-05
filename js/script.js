@@ -18,16 +18,18 @@ $(document).ready(function () {
             $home = $(".home"),
             $projects = $(".projects"),
             $about = $(".about");
+            
 
         $a.click(function ()
         {
                 //alert("I am here");
                 
-                $(".background").css("background-image","url(images/1.jpg)");
+                $(".background").css("background-image","url(images/1.JPG)");
                 $(".background").css("filter","blur(0px)");
                 $about.fadeOut();
                 $projects.fadeOut();
                 $home.fadeIn();
+
         });
         
         $b.click(function ()
@@ -51,6 +53,5 @@ $(document).ready(function () {
                 $home.fadeOut();
                 $about.fadeOut();
                 $projects.fadeIn();
-
         });
 });
