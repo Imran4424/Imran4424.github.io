@@ -23,7 +23,7 @@ $(document).ready(function () {
         {
                 //alert("I am here");
                 
-                $(".background").css("background-image","url(images/1.jpg)");
+                $(".background").css("background-image","url(images/1.JPG)");
                 $(".background").css("filter","blur(0px)");
                 $about.fadeOut();
                 $projects.fadeOut();
