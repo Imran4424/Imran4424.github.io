@@ -1,0 +1,212 @@
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+html, body
+{
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	font-weight: normal;
+	scroll-behavior: auto;
+}
+
+.background
+{
+	background-image: url(../images/1.jpg);
+	min-height: 100%;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow-y: auto;
+}
+
+.navigation
+{
+	width: 350px;
+	height: auto;
+	position: absolute;
+
+	top: 20%;
+	left: 20px;
+}
+
+.navigation a
+{
+	text-decoration: none;
+	font-size: 28px;
+	font-family: verdana;
+	font-weight: normal;
+	height: 95px;
+	margin: 10px;
+	float: left;
+	display: inline-block;
+	background-color: black;
+	color: white;
+	line-height: 90px;
+	text-align: center;
+	transition: 300ms;
+}
+
+a.active, .navigation a:hover
+{
+	background-color: white;
+	color: black;
+	width: 100%;
+
+	border-style: solid;
+	border-color: cadetblue;
+}
+
+.a
+{
+	width: 95%;
+}
+.b
+{
+	width: 85%;
+}
+.c
+{
+	width: 80%;
+}
+.d
+{
+	width: 90%;
+}
+
+.content
+{
+	position: absolute;
+	width: 930px;
+	min-height: 500px;
+	height: auto;
+	/*background-color: red;*/
+	right: 0;
+	top: 20%;
+}
+
+.home
+{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	color: black;
+	font-weight: normal;
+	font-family: verdana;
+	padding-bottom: 10px;
+}
+
+.home h1
+{
+	font-size: 56px;
+	padding-right: 60px;
+	text-transform: uppercase;
+}
+
+.home h2
+{
+	font-size: 28px;
+	padding: 5px,0;
+	opacity: 0.6;
+}
+
+.about
+{
+	position: absolute;
+	right: 0;
+	top: 10px;
+	color: black;
+	font-weight: normal;
+	font-family: century gothic;
+	padding: 0 60px;
+	display: none;
+	overflow-y: auto;
+
+}
+
+.about h1
+{
+	font-size: 40px;
+	font-family: Georgia;
+	color: green;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.about h2
+{
+	font-size: 30px;
+	font-family: Georgia;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 100px;
+}
+
+.about ul
+{
+	padding-left: 250px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 20px;
+	font-style: bold;
+	font-family: Georgia;
+}
+
+.about li
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-family: Georgia;
+	color: green;
+}
+
+.about p
+{
+	font-size: 20px;
+	font-family: Georgia;
+	padding-top: 5px;
+	padding-bottom: 50px;
+}
+
+.column a,h3
+{
+	font-size: 25px;
+	font-family: Georgia;
+	font-style: bold;
+	padding-left: 150px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	color: purple;	
+}
+
+.column a:hover
+{
+	color: red;
+}
+
+.projects 
+{
+	position: absolute;
+	left: 0;
+	top: 10px;
+	color: black;
+	font-weight: normal;
+	font-family: century gothic;
+	padding: 0 60px;
+	display: none;
+	overflow-y: auto;
+
+}
+
+.projects h1 
+{
+	font-size: 40px;
+	font-family: Georgia;
+	color: green;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
