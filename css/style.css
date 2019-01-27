@@ -252,6 +252,18 @@ a.active, .navigation a:hover
 	padding-right: 250px;
 }
 
+.projects h4
+{
+	font-size: 17px;
+	font-family: Georgia;
+	/* color:#808000; */
+	color: #DB4437;
+
+	padding-left: 150px;
+	padding-bottom: 15px;
+	padding-top: 5px;
+}
+
 .projects h3
 {
 	font-size: 25px;
