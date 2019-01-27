@@ -4,56 +4,12 @@
 	padding: 0;
 }
 
-/* responsive code start */
-
-#container {
-	display: block;
-}
-
-@media only screen and (orientation:portrait) {
-
-	#container {
-
-		height: 100vw;
-
-		-webkit-transform: rotate(90deg);
-
-		-moz-transform: rotate(90deg);
-
-		-o-transform: rotate(90deg);
-
-		-ms-transform: rotate(90deg);
-
-		transform: rotate(90deg);
-
-	}
-
-}
-
-@media only screen and (orientation:landscape) {
-
-	#container {
-
-		-webkit-transform: rotate(0deg);
-
-		-moz-transform: rotate(0deg);
-
-		-o-transform: rotate(0deg);
-
-		-ms-transform: rotate(0deg);
-
-		transform: rotate(0deg);
-
-	}
-
-}
-
-
-/* responsive code end  */
 
 
 html, body
 {
+	
+
 	width: 100%;
 	height: 100%;
 	font-size: 14px;
@@ -62,22 +18,22 @@ html, body
 	overflow: hidden;	
 }
 
-.background
+body
 {
-	background-image: url(../images/1.jpg);
 	min-height: 100%;
+	background-image: url(../images/1.jpg);
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
-	position: relative;
 }
+
 
 .navigation
 {
 	width: 350px;
 	height: auto;
 	position: absolute;
-
+	
 	top: 20%;
 	left: 20px;
 }
@@ -86,25 +42,24 @@ html, body
 {
 	position: absolute;
 	height: 50px;
-	width: 50px;
+	width: 300px;
 	/* float: right; */
 	top: 0;
 	right: 0;
-	padding-right: 230px;
+	
 	padding-top: 20px;
+	
+}
 
+.socialId img
+{
+	height: 50px;
+	width: 50px;	
 }
 
 .socialId td
 {
 	padding-right: 0.5mm;
-}
-
-.white
-{
-	border-style: hidden;
-
-	border-width: 0.003mm;
 }
 
 
@@ -114,7 +69,7 @@ html, body
 	font-size: 28px;
 	font-family: verdana;
 	font-weight: normal;
-	height: 95px;
+	max-height: 95px;
 	margin: 10px;
 	float: left;
 	display: inline-block;
@@ -130,7 +85,7 @@ a.active, .navigation a:hover
 	background-color: white;
 	color: black;
 	width: 100%;
-
+	
 	border-style: solid;
 	border-color: cadetblue;
 }
@@ -206,7 +161,7 @@ a.active, .navigation a:hover
 	font-family: century gothic;
 	padding: 0 60px;
 	display: none;
-
+	
 }
 
 .about h1
@@ -274,7 +229,7 @@ a.active, .navigation a:hover
 .projects 
 {
 	position: absolute;
-	left: 0;
+	right: 0;
 	top: 10px;
 	color: black;
 	font-weight: normal;
@@ -290,6 +245,7 @@ a.active, .navigation a:hover
 	color: green;
 	padding-bottom: 15px;
 	padding-top: 5px;
+	padding-right: 250px;
 }
 
 .projects h3
@@ -297,7 +253,7 @@ a.active, .navigation a:hover
 	font-size: 25px;
 	font-family: Georgia;
 	color: black;
-
+	
 	padding-left: 150px;
 	padding-bottom: 5px;
 	padding-top: 5px;
@@ -308,7 +264,7 @@ a.active, .navigation a:hover
 	font-size: 15px;
 	font-family: Georgia;
 	color: black;
-
+	
 	padding-left: 150px;
 	padding-bottom: 5px;
 	padding-top: 5px;
@@ -324,7 +280,7 @@ a.active, .navigation a:hover
 	font-size: 15px;
 	font-family: Georgia;
 	font-style: bold;
-
+	
 	padding-left: 150px;
 	padding-top: 5px;
 	padding-bottom: 10px;
@@ -334,3 +290,187 @@ a.active, .navigation a:hover
 .projects a:hover {
 	color: red;
 }
+
+/* blog */
+
+.blog 
+{
+	position: absolute;
+	right: 0;
+	top: 10px;
+	color: black;
+	font-weight: normal;
+	font-family: century gothic;
+	padding: 0 60px;
+	display: none;
+}
+
+.blog h1 
+{
+	font-size: 40px;
+	font-family: Georgia;
+	color: green;
+	padding-bottom: 15px;
+	padding-top: 5px;
+	padding-right: 250px;
+}
+
+.blog p
+{
+	font-size: 25px;
+	font-family: Georgia;
+	color: black;
+	
+	padding-left: 150px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.blog h6 
+{
+	font-size: 15px;
+	font-family: Georgia;
+	color: black;
+	
+	padding-left: 150px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.blog h5
+{
+	padding-bottom: 50px;
+}
+
+.blog a
+{
+	font-size: 15px;
+	font-family: Georgia;
+	font-style: bold;
+	
+	padding-left: 150px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	color: purple;
+}
+
+.blog a:hover {
+	color: red;
+}
+
+/* responsive code start */
+
+/* screen adaptation */
+
+@media only screen and (max-width: 1280px)
+{
+	.home h1 {
+		font-size: 52px;
+	}
+}
+
+@media only screen and (min-width: 1920px)
+{
+
+	.socialId {
+		position: absolute;
+		height: 80px;
+		width: 480px;
+		/* float: right; */
+		top: 0;
+		right: 0;
+		padding-top: 20px;
+
+	}
+
+	.socialId td {
+		padding-right: 0.5mm;
+	}
+
+	.socialId img {
+		height: 80px;
+		width: 80px;
+	}
+
+	.content {
+		position: absolute;
+		width: 1500px;
+		min-height: 750px;
+		height: auto;
+
+	}
+
+	.home {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		color: black;
+		font-weight: normal;
+		font-family: verdana;
+		padding-bottom: 10px;
+	}
+
+	.home h1 {
+		font-size: 95px; 
+		padding-right: 60px;
+		text-transform: uppercase;
+	}
+
+	.home h2 {
+		font-size: 40px;
+		padding: 5px, 0;
+		opacity: 0.6;
+	}
+
+	/* about */
+
+	.about h1 {
+		font-size: 60px;
+		font-family: Georgia;
+		color: green;
+		padding-bottom: 5px;
+		padding-top: 5px;
+	}
+
+	.about h2 {
+		font-size: 45px;
+	}
+
+	.about ul {
+		font-size: 40px;
+	}
+
+
+	.about p {
+		font-size: 30px;
+		
+	}
+
+	.column h3 {
+		font-size: 40px;
+		
+	}
+
+	
+
+	/* projects */
+
+	.projects h1 {
+		font-size: 70px;
+	}
+
+	.projects h3 {
+		font-size: 40px;
+	}
+
+	.projects h6 {
+		font-size: 25px;
+	}
+
+	.projects a {
+		font-size: 25px;
+		
+	}
+}
+
+/* responsive code end  */
