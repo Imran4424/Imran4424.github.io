@@ -1,0 +1,108 @@
+@media only screen and (max-width: 1280px) {
+        .home h1 {
+                font-size: 52px;
+        }
+}
+
+@media only screen and (min-width: 1920px) {
+
+        .socialId {
+                position: absolute;
+                height: 80px;
+                width: 480px;
+                /* float: right; */
+                top: 0;
+                right: 0;
+                padding-top: 20px;
+
+        }
+
+        .socialId td {
+                padding-right: 0.5mm;
+        }
+
+        .socialId img {
+                height: 80px;
+                width: 80px;
+        }
+
+        .content {
+                position: absolute;
+                width: 1500px;
+                min-height: 750px;
+                height: auto;
+
+        }
+
+        .home {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                color: black;
+                font-weight: normal;
+                font-family: verdana;
+                padding-bottom: 10px;
+        }
+
+        .home h1 {
+                font-size: 95px;
+                padding-right: 60px;
+                text-transform: uppercase;
+        }
+
+        .home h2 {
+                font-size: 40px;
+                padding: 5px, 0;
+                opacity: 0.6;
+        }
+
+        /* about */
+
+        .about h1 {
+                font-size: 60px;
+                font-family: Georgia;
+                color: green;
+                padding-bottom: 5px;
+                padding-top: 5px;
+        }
+
+        .about h2 {
+                font-size: 45px;
+        }
+
+        .about ul {
+                font-size: 40px;
+        }
+
+
+        .about p {
+                font-size: 30px;
+
+        }
+
+        .column h3 {
+                font-size: 40px;
+
+        }
+
+
+
+        /* projects */
+
+        .projects h1 {
+                font-size: 70px;
+        }
+
+        .projects h3 {
+                font-size: 40px;
+        }
+
+        .projects h6 {
+                font-size: 25px;
+        }
+
+        .projects a {
+                font-size: 25px;
+
+        }
+}
