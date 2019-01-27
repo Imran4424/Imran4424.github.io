@@ -57,6 +57,10 @@ body
 	width: 50px;	
 }
 
+.socialId img:hover {
+	transform: scale(1.5);
+}
+
 .socialId td
 {
 	padding-right: 0.5mm;
