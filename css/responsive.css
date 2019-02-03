@@ -4,6 +4,23 @@
         }
 }
 
+@media only screen and (min-width:1500px)
+{
+        .content 
+        {
+                width: 1100px;
+                min-height: 550px;
+
+        }
+}
+
+@media only screen and (min-width:1700px)
+{
+        .content {      
+                min-height: 620px;
+        }
+}
+
 @media only screen and (min-width: 1920px) {
 
         .socialId {
@@ -39,9 +56,6 @@
                 right: 0;
                 bottom: 0;
                 color: black;
-                font-weight: normal;
-                font-family: verdana;
-                padding-bottom: 10px;
         }
 
         .home h1 {
