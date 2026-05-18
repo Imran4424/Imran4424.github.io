@@ -1,99 +1,350 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width'>
-  <title>Privacy Policy</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Tiny Dance Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 1em; }
+    :root {
+      --pink: #e91e63;
+      --pink-deep: #c2185b;
+      --pink-soft: #fce4ec;
+      --bg: #fffafc;
+      --text: #1a1a1a;
+      --text-muted: #595959;
+      --border: #f0e0e8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+    .header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .app-name {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      color: var(--pink);
+      font-size: 13px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      font-size: 44px;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .effective-date {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .intro p {
+      font-size: 17px;
+      color: var(--text-muted);
+    }
+    .intro p:first-child {
+      color: var(--text);
+    }
+    h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.3;
+      margin: 56px 0 18px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    h2 .section-num {
+      color: var(--pink);
+      margin-right: 10px;
+      font-weight: 500;
+    }
+    h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+      margin: 28px 0 10px;
+      color: var(--text);
+    }
+    p { margin: 0 0 16px; }
+    a {
+      color: var(--pink-deep);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease;
+    }
+    a:hover { color: var(--pink); }
+    strong { font-weight: 600; color: var(--text); }
+    em { font-style: italic; }
+    ul {
+      padding-left: 24px;
+      margin: 0 0 18px;
+    }
+    li { margin-bottom: 8px; }
+    li::marker { color: var(--pink); }
+    .contact-block {
+      background: var(--pink-soft);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-top: 8px;
+    }
+    .contact-block ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .contact-block li { margin-bottom: 4px; }
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+    footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 40px 20px 60px; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 22px; margin: 44px 0 14px; }
+      h3 { font-size: 16px; }
+      .intro p { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header class="header">
+      <div class="app-name">Tiny Dance Tracker</div>
+      <h1>Privacy Policy</h1>
+      <div class="effective-date">Effective date: May 18, 2026</div>
+    </header>
 
-  <strong>Privacy Policy</strong>
-  <p>This privacy policy is applicable to the Tiny Dance Tracker app (hereinafter referred to as "Application") for mobile devices, which was developed by Luminous Inc. (hereinafter referred to as "Service Provider") as a a Free service. This service is provided "AS IS".</p>
+    <div class="intro">
+      <p>This Privacy Policy explains how <strong>Luminous Inc.</strong> ("we", "us", "our", or the "Service Provider") collects, uses, and protects information when you use the <strong>Tiny Dance Tracker</strong> mobile application (the "Application" or "App"). The Application is provided as a free service "as is".</p>
 
-  <br>
-  <strong>What information does the Application obtain and how is it used?</strong>
-  <p>The Application acquires the information you supply when you download and register the Application. Registration with the Service Provider is not mandatory. However, bear in mind that you might not be able to utilize some of the features offered by the Application unless you register with them.</p>
-  <p>The Service Provider may also use the information you provided them to contact you from time to time to provide you with important information, required notices and marketing promotions.</p>
+      <p>We act as the <strong>data controller</strong> for personal data processed through the Application within the meaning of the EU General Data Protection Regulation (Regulation (EU) 2016/679, "GDPR"), the UK GDPR, and equivalent laws in the EEA and Switzerland.</p>
 
-  <br>
-  <strong>What information does the Application collect automatically?</strong>
-  <p>In addition, the Application may collect certain information automatically, including, but not limited to, the type of mobile device you use, your mobile devices unique device ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browsers you use, and information about the way you use the Application.</p>
+      <p>By using the Application, you acknowledge that you have read and understood this Privacy Policy.</p>
+    </div>
 
-  <br>
-  <strong>Does the Application collect precise real time location information of the device?</strong>
-  <p>This Application does not gather precise information about the location of your mobile device.</p>
-  <!---->
-
-  <br>
-  <strong>Does the Application use Artificial Intelligence (AI) technologies?</strong>
-  <p>The Application does not use Artificial Intelligence (AI) technologies to process your data or provide features.</p>
-  <!---->
-
-  <br>
-  <strong>Do third parties see and/or have access to information obtained by the Application?</strong>
-  <p>Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.</p>
-
-  <div>
-    <br>
-    <p>Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:</p>
+    <h2><span class="section-num">1.</span>Who we are</h2>
     <ul>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Google Play Services</a></li>
-      <li><a>Firebase Authentication</a></li>
-      <li><a>Cloud Firestore</a></li>
-      <li><a>Firebase Cloud Functions</a></li>
-      <li><a>Firebase Cloud Messaging</a></li>
+      <li><strong>Service Provider / Data Controller:</strong> Luminous Inc.</li>
+      <li><strong>Contact email:</strong> luminous.inc18@gmail.com</li>
+      <li><strong>Application:</strong> Tiny Dance Tracker (Android)</li>
     </ul>
+
+    <h2><span class="section-num">2.</span>Information we collect</h2>
+
+    <h3>2.1 Information you provide to us</h3>
+    <p>When you register and use the Application, we may collect:</p>
+    <ul>
+      <li>Account information (such as display name and phone number) provided through authentication and onboarding</li>
+      <li>Pregnancy-related data you choose to track (kick counts, kick sessions, pregnancy week, due date, milestones)</li>
+      <li>Connections you create (mothers you follow, viewers who follow your pregnancy)</li>
+      <li>Notification preferences and other settings</li>
+    </ul>
+    <p>Registration is required to use core features of the Application.</p>
+
+    <h3>2.2 Information collected automatically</h3>
+    <p>When you use the Application, we and our third-party service providers may automatically collect:</p>
+    <ul>
+      <li>Device information (model, operating system, language, country)</li>
+      <li>Unique device identifiers</li>
+      <li>IP address (used for coarse location and fraud prevention)</li>
+      <li>Application usage data (features used, sessions, error reports)</li>
+      <li>Push notification token (Firebase Cloud Messaging)</li>
+      <li>Advertising ID (Android Advertising ID / AAID), where applicable</li>
+    </ul>
+
+    <h3>2.3 Information we do not collect</h3>
+    <ul>
+      <li>We do not collect precise GPS location</li>
+      <li>We do not use artificial intelligence (AI) technologies to process your data</li>
+      <li>We do not collect biometric data</li>
+      <li>We do not sell your personal data to third parties</li>
+    </ul>
+
+    <h2><span class="section-num">3.</span>How we use your information</h2>
+    <p>We use your information to:</p>
+    <ul>
+      <li>Provide, maintain, and improve the Application's features (kick tracking, sharing with viewers, pregnancy progress)</li>
+      <li>Authenticate you and secure your account</li>
+      <li>Send push notifications you have opted into (e.g., kick alerts shared with followers)</li>
+      <li>Communicate with you about important notices and service updates</li>
+      <li>Display advertisements (see Section 6 — Advertising)</li>
+      <li>Detect, prevent, and address fraud, abuse, or technical issues</li>
+      <li>Comply with legal obligations</li>
+    </ul>
+
+    <h2><span class="section-num">4.</span>Legal basis for processing (GDPR Article 6)</h2>
+    <p>If you are in the EU, EEA, UK, or Switzerland, we process your personal data on the following legal bases:</p>
+    <ul>
+      <li><strong>Providing core App features</strong> (kick tracking, sharing) — <em>Contract</em> (Art. 6(1)(b)): processing is necessary to provide the service you signed up for.</li>
+      <li><strong>Sending push notifications</strong> — <em>Consent</em> (Art. 6(1)(a)): you opt in at runtime.</li>
+      <li><strong>Personalized advertising</strong> — <em>Consent</em> (Art. 6(1)(a)): captured via the in-app consent dialog.</li>
+      <li><strong>Non-personalized advertising</strong> — <em>Legitimate interest</em> (Art. 6(1)(f)): to fund the operation of the Application.</li>
+      <li><strong>Fraud prevention and security</strong> — <em>Legitimate interest</em> (Art. 6(1)(f)).</li>
+      <li><strong>Service communications</strong> — <em>Contract</em> (Art. 6(1)(b)).</li>
+      <li><strong>Compliance with legal obligations</strong> — <em>Legal obligation</em> (Art. 6(1)(c)).</li>
+    </ul>
+    <p>You may withdraw consent at any time (see Section 10 — Your rights).</p>
+
+    <h2><span class="section-num">5.</span>Third-party services</h2>
+    <p>The Application uses the following third-party services. Each has its own privacy policy:</p>
+    <ul>
+      <li><strong>Firebase Authentication</strong> — User sign-in and account management.</li>
+      <li><strong>Cloud Firestore</strong> — Storage of pregnancy data, kick logs, and follow relationships.</li>
+      <li><strong>Firebase Cloud Functions</strong> — Server-side processing for cross-user features (e.g., notifying viewers of new kicks).</li>
+      <li><strong>Firebase Cloud Messaging (FCM)</strong> — Delivery of push notifications.</li>
+      <li><strong>Google AdMob</strong> — Display of advertisements within the Application (see Section 6).</li>
+      <li><strong>Google Play Services</strong> — Underlying platform services.</li>
+    </ul>
+    <p>All of the above are operated by Google. You can review Google's privacy practices here:</p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+      <li><a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use our services</a></li>
+    </ul>
+
+    <h2><span class="section-num">6.</span>Advertising</h2>
+    <p>We use <strong>Google AdMob</strong> to display advertisements within the Application. Advertising revenue helps us cover the operating costs of running the service (cloud infrastructure, push notifications, authentication).</p>
+
+    <h3>6.1 Data collected by AdMob and its advertising partners</h3>
+    <p>AdMob and its partners may collect and process:</p>
+    <ul>
+      <li>Advertising ID (AAID)</li>
+      <li>IP address (used for approximate location and fraud prevention)</li>
+      <li>Device information (model, OS version, language, country)</li>
+      <li>App usage signals (ad views, clicks, time spent)</li>
+      <li>Approximate location derived from IP</li>
+    </ul>
+
+    <h3>6.2 Purpose of advertising data processing</h3>
+    <ul>
+      <li>Serving advertisements (personalized or non-personalized)</li>
+      <li>Measuring ad performance</li>
+      <li>Frequency capping (so you do not see the same ad too often)</li>
+      <li>Fraud and abuse prevention</li>
+    </ul>
+
+    <h3>6.3 Personalized vs. non-personalized advertising</h3>
+    <ul>
+      <li><strong>Personalized ads</strong> use information about your device and activity to show ads more relevant to you. These require your consent in the EU, EEA, UK, and Switzerland.</li>
+      <li><strong>Non-personalized ads</strong> are based only on contextual information, such as the content of the App and approximate location at country level.</li>
+    </ul>
+
+    <h3>6.4 Consent for users in the EU, EEA, UK, and Switzerland</h3>
+    <p>If you are located in the EU, EEA, UK, or Switzerland, before any advertisements are shown, we will present you with a consent dialog implemented using Google's <strong>User Messaging Platform (UMP)</strong> and based on the IAB Transparency and Consent Framework (TCF v2.2). The dialog lets you:</p>
+    <ul>
+      <li>Accept personalized advertising</li>
+      <li>Reject personalized advertising (you may then see non-personalized ads, or no ads, depending on your choices)</li>
+      <li>Manage which advertising vendors may process your data</li>
+    </ul>
+    <p>You can change your choice at any time via <strong>Settings → Privacy options</strong> within the Application.</p>
+
+    <h3>6.5 Other ways to control advertising</h3>
+    <ul>
+      <li><strong>Reset or delete your advertising ID:</strong> On your Android device, go to <em>Settings → Google → Ads</em> and select "Delete advertising ID" or "Reset advertising ID".</li>
+      <li><strong>Remove Ads (upcoming):</strong> A future version of the Application will offer a "Remove Ads" in-app purchase that disables advertising entirely. When available, this option will appear in the App's Settings.</li>
+    </ul>
+
+    <h3>6.6 Target audience</h3>
+    <p>The Application is <strong>not directed at children</strong>. Our AdMob settings are configured accordingly.</p>
+
+    <h2><span class="section-num">7.</span>International data transfers</h2>
+    <p>The Application uses Google Firebase and Google AdMob, both operated by Google LLC, which may process and store your data outside your country of residence — including in the United States.</p>
+    <p>Where data is transferred from the EU, EEA, UK, or Switzerland to a country not deemed to provide an adequate level of data protection, the transfer is safeguarded by the European Commission's <strong>Standard Contractual Clauses (SCCs)</strong> entered into between Google and its customers, as described in <a href="https://business.safety.google/intl-data-transfers/">Google's data processing terms</a>.</p>
+
+    <h2><span class="section-num">8.</span>Data retention</h2>
+    <p>We retain your personal data only for as long as necessary for the purposes described in this Policy:</p>
+    <ul>
+      <li><strong>Account and pregnancy data:</strong> Retained while your account is active. If you request account deletion, your data is permanently deleted within 90 days, except where retention is required by law.</li>
+      <li><strong>Automatically collected data:</strong> Retained for up to 24 months, after which it may be retained in aggregated or anonymized form.</li>
+      <li><strong>Advertising identifiers and ad-related signals:</strong> Retained according to Google AdMob's policies, typically only as long as necessary for fraud prevention, measurement, and frequency capping.</li>
+    </ul>
+    <p>To request deletion of your data, contact us at <strong>luminous.inc18@gmail.com</strong>.</p>
+
+    <h2><span class="section-num">9.</span>Data security</h2>
+    <p>We use physical, electronic, and procedural safeguards to protect your information, including:</p>
+    <ul>
+      <li>Encryption in transit (TLS) for all network communication</li>
+      <li>Encryption at rest for data stored in Firebase</li>
+      <li>Access controls limiting who can view your data</li>
+      <li>Authentication required for account access</li>
+    </ul>
+    <p>No security system is impenetrable. While we take reasonable measures to protect your information, we cannot guarantee absolute security.</p>
+
+    <h2><span class="section-num">10.</span>Your rights</h2>
+    <p>If you are in the EU, EEA, UK, or Switzerland, you have the following rights under the GDPR:</p>
+    <ul>
+      <li><strong>Right of access</strong> (Art. 15) — Request a copy of the personal data we hold about you.</li>
+      <li><strong>Right to rectification</strong> (Art. 16) — Ask us to correct inaccurate or incomplete data.</li>
+      <li><strong>Right to erasure</strong> ("right to be forgotten", Art. 17) — Ask us to delete your data, subject to certain exceptions.</li>
+      <li><strong>Right to restriction of processing</strong> (Art. 18) — Ask us to limit how we process your data.</li>
+      <li><strong>Right to data portability</strong> (Art. 20) — Receive your data in a portable, machine-readable format.</li>
+      <li><strong>Right to object</strong> (Art. 21) — Object to processing based on legitimate interests, including profiling.</li>
+      <li><strong>Right to withdraw consent</strong> (Art. 7(3)) — Where processing is based on consent, you may withdraw it at any time without affecting the lawfulness of prior processing.</li>
+      <li><strong>Right to lodge a complaint</strong> (Art. 77) — Lodge a complaint with your local data protection supervisory authority. A list is available at the <a href="https://edpb.europa.eu/about-edpb/board/members_en">European Data Protection Board website</a>.</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <strong>luminous.inc18@gmail.com</strong>. We will respond within 30 days.</p>
+    <p>You may also stop all data collection by uninstalling the Application.</p>
+
+    <h2><span class="section-num">11.</span>Children's privacy</h2>
+    <p>The Application is not directed at children under the age of 13 (or the applicable minimum age in your jurisdiction — for example, 16 in some EU member states). We do not knowingly collect personal data from children.</p>
+    <p>If we learn that we have inadvertently collected personal data from a child without verified parental consent, we will delete that data promptly. If you believe a child has provided us with personal information, please contact us at <strong>luminous.inc18@gmail.com</strong>.</p>
+
+    <h2><span class="section-num">12.</span>Identifiers and similar technologies</h2>
+    <p>The Application and its service providers use device identifiers (such as the Android Advertising ID) and similar technologies to recognize your device, deliver advertising, prevent fraud, and measure service performance. You can reset or limit these identifiers via your Android device settings.</p>
+
+    <h2><span class="section-num">13.</span>Changes to this Privacy Policy</h2>
+    <p>We may update this Privacy Policy from time to time. The updated version will be indicated by a revised "Effective date" at the top of this page. For material changes, we will provide more prominent notice (for example, an in-App notification). We encourage you to review this Policy periodically.</p>
+
+    <h2><span class="section-num">14.</span>How you give consent</h2>
+    <p>By using the Application, you consent to the collection and use of information as described in this Privacy Policy. Where the law requires explicit consent (for example, for personalized advertising in the EU), you will be asked separately and may decline.</p>
+
+    <h2><span class="section-num">15.</span>Contact us</h2>
+    <p>If you have any questions about this Privacy Policy, your rights, or our data practices, please contact us:</p>
+    <div class="contact-block">
+      <ul>
+        <li><strong>Email:</strong> luminous.inc18@gmail.com</li>
+        <li><strong>Entity:</strong> Luminous Inc.</li>
+      </ul>
+    </div>
+
+    <footer>
+      © 2026 Luminous Inc. · Tiny Dance Tracker
+    </footer>
   </div>
-
-  <p>The Service Provider may disclose User Provided and Automatically Collected Information:</p>
-  <ul>
-    <li>as required by law, such as to comply with a subpoena, or similar legal process;</li>
-    <li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;</li>
-    <li>with their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.</li>
-  </ul>
-  <p></p>
-
-  <br>
-  <strong>What are my opt-out rights?</strong>
-  <p>You can halt all collection of information by the Application easily by uninstalling the Application. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.</p>
-
-  <br>
-  <strong>What is the data retention policy and how can you manage your information?</strong>
-  <p>The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. The Service Provider will retain Automatically Collected information for up to 24 months and thereafter may store it in aggregate. If you'd like the Service Provider to delete User Provided Data that you have provided via the Application, please contact them at luminous.inc18@gmail.com and we will respond in a reasonable time. Please note that some or all of the User Provided Data may be required in order for the Application to function properly.</p>
-
-  <br>
-  <strong>How does the Application address children's privacy?</strong>
-  <p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.</p>
-
-  <div>
-    <br>
-    <p>The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. In the case the Service Provider discover that a child under 13 has provided personal information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact the Service Provider (luminous.inc18@gmail.com) so that they will be able to take the necessary actions.</p>
-  </div>
-
-  <br>
-  <strong>How is your information kept secure?</strong>
-  <p>The Service Provider are concerned about safeguarding the confidentiality of your information. The Service Provider provide physical, electronic, and procedural safeguards to protect information we process and maintain. For example, we limit access to this information to authorized employees and contractors who need to know that information in order to operate, develop or improve their Application. Please be aware that, although we endeavor provide reasonable security for information we process and maintain, no security system can prevent all potential security breaches.</p>
-
-  <br>
-  <strong>How will you be informed of changes to this Privacy Policy?</strong>
-  <p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</p>
-
-  <br>
-  <p>This privacy policy is effective as of 2026-05-15</p>
-
-  <br>
-  <strong>How do you give your consent?</strong>
-  <p>By using the Application, you are giving your consent to the Service Provider processing of your information as set forth in this Privacy Policy now and as amended by us. "Processing,” means using cookies on a computer/hand held device or using or touching information in any way, including, but not limited to, collecting, storing, deleting, using, combining and disclosing information.</p>
-
-  <br>
-  <strong>How can you contact us?</strong>
-  <p>If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at luminous.inc18@gmail.com.</p>
-
-  <hr>
-  <p>This privacy policy page was generated by <a href="https://app-privacy-policy-generator.nisrulz.com/" target="_blank" rel="noopener noreferrer">App Privacy Policy Generator</a></p>
-
 </body>
 </html>
