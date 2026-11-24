@@ -21,6 +21,7 @@
   .container { width: calc(100% - 64px); }
   .wordmark-label { display: none; }
   .site-nav { gap: 25px; }
+  .appearance-control button span { display: none; }
   .hero { column-gap: 32px; }
   .hero h1 { font-size: clamp(54px, 6.4vw, 72px); }
   .hero-intro { font-size: 19px; }
@@ -89,10 +90,11 @@
 
 @media (max-width: 760px) {
   .container { width: calc(100% - 40px); }
-  .header-inner { height: auto; min-height: 78px; flex-wrap: wrap; column-gap: 20px; row-gap: 0; padding-top: 16px; padding-bottom: 16px; }
+  .header-inner { height: auto; min-height: 78px; flex-wrap: wrap; column-gap: 10px; row-gap: 0; padding-top: 16px; padding-bottom: 16px; }
   .wordmark { font-size: 30px; }
   .menu-toggle { display: none; }
-  .js .menu-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 12px; margin-left: auto; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: 9px 12px; color: var(--ink); background: transparent; font-size: 12px; }
+  .js .menu-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: 9px 12px; color: var(--ink); background: transparent; font-size: 12px; }
+  .appearance-control button { min-width: 44px; min-height: 44px; }
   .menu-lines { position: relative; display: inline-block; width: 17px; height: 12px; border-top: 1px solid currentColor; border-bottom: 1px solid currentColor; }
   .menu-lines::before { content: ""; position: absolute; left: 0; top: 5px; width: 17px; border-top: 1px solid currentColor; }
   .site-nav { width: 100%; flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 23px; padding: 17px 0 0; }
@@ -225,6 +227,9 @@
   .container { width: calc(100% - 32px); }
   .site-nav { column-gap: 19px; }
   .site-nav a { font-size: 13px; }
+  .header-inner { column-gap: 8px; }
+  .js .menu-toggle { padding-inline: 8px; }
+  .js .menu-toggle > span:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .hero { padding-top: 35px; }
   .hero h1 { font-size: 40px; letter-spacing: -1.9px; }
   .hero-intro { font-size: 16px; }

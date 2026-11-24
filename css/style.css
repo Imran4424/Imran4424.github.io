@@ -350,6 +350,78 @@ section[id] {
   display: none
 }
 
+.appearance-control {
+  --appearance-inset: 3px;
+  --appearance-offset: 0%;
+  display: inline-grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  position: relative;
+  isolation: isolate;
+  padding: var(--appearance-inset);
+  border-radius: 999px;
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  background: var(--theme-panel, var(--white));
+  border: 1px solid var(--theme-panel-border, var(--line));
+}
+
+.appearance-control[data-mode="light"] {
+  --appearance-offset: 100%;
+}
+
+.appearance-control[data-mode="dark"] {
+  --appearance-offset: 200%;
+}
+
+.appearance-control::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: var(--appearance-inset) auto var(--appearance-inset) var(--appearance-inset);
+  width: calc((100% - 2 * var(--appearance-inset)) / 3);
+  border-radius: inherit;
+  background: var(--theme-action, var(--green));
+  transform: translateX(var(--appearance-offset));
+  transition: transform 330ms cubic-bezier(.2, .85, .25, 1.08);
+}
+
+.appearance-control button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  min-width: 36px;
+  min-height: 34px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 600;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.appearance-control button[aria-pressed="true"] {
+  color: var(--theme-action-ink, var(--white));
+}
+
+@media (hover: hover) {
+  .appearance-control button:hover:not([aria-pressed="true"]) {
+    color: var(--ink);
+    background: var(--theme-hover, var(--sage));
+  }
+}
+
+.appearance-control button:focus-visible {
+  outline-offset: 1px;
+}
+
+.appearance-control .icon {
+  width: 15px;
+  height: 15px;
+}
+
 /* Intro, with the actual Lif interface cropped from its App Store preview. */
 .hero {
   display: grid;
@@ -1206,6 +1278,19 @@ section[id] {
   font-size: 12px;
   margin-top: 7px;
   color: #58664f
+}
+
+.timeline-details {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
+
+.timeline-app-link {
+  min-height: 44px;
+  color: var(--green);
+  font-size: 12px;
 }
 
 .timeline ul {

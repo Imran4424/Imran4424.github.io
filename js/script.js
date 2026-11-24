@@ -2,7 +2,51 @@
 (() => {
   "use strict";
 
+  function initAppearance() {
+    const control = document.getElementById("appearance-control");
+    const themeColor = document.getElementById("portfolio-theme-color");
+    if (!control || !themeColor || !CSS.supports("color", "light-dark(black, white)")) return;
+
+    const root = document.documentElement;
+    const buttons = control.querySelectorAll("[data-appearance]");
+
+    const setAppearance = (mode) => {
+      if (mode === "system") {
+        delete root.dataset.theme;
+        themeColor.content = "#f7f7f0";
+        themeColor.media = "(prefers-color-scheme: light)";
+      } else {
+        root.dataset.theme = mode;
+        themeColor.content = mode === "dark" ? "#171e19" : "#f7f7f0";
+        themeColor.removeAttribute("media");
+      }
+
+      control.dataset.mode = mode;
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.appearance === mode));
+      });
+    };
+
+    setAppearance(root.dataset.theme || "system");
+    control.hidden = false;
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const mode = button.dataset.appearance;
+        setAppearance(mode);
+        try {
+          if (mode === "system") localStorage.removeItem("portfolio-theme");
+          else localStorage.setItem("portfolio-theme", mode);
+        } catch {
+          // Appearance still updates when the browser disallows persistent storage.
+        }
+      });
+    });
+  }
+
   function initPortfolio() {
+    initAppearance();
+
     const menuToggle = document.querySelector(".menu-toggle");
     const navigation = document.getElementById("primary-nav");
 
@@ -58,7 +102,7 @@
 
         button.addEventListener("click", () => {
           const filter = button.dataset.filter;
-          if (!["all", "ios", "android"].includes(filter)) return;
+          if (!["all", "ios", "android"].includes(filter) || button.getAttribute("aria-pressed") === "true") return;
 
           let visibleCount = 0;
           projects.forEach((project) => {
@@ -75,6 +119,7 @@
             const category = filter === "ios" ? "iOS " : filter === "android" ? "Android " : "";
             filterStatus.textContent = `Showing ${visibleCount} ${category}project${visibleCount === 1 ? "" : "s"}.`;
           }
+          projectGrid?.dispatchEvent(new Event("portfolio:filter"));
         });
       });
       filterControls.hidden = false;

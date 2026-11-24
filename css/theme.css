@@ -1,0 +1,359 @@
+/* System appearance is the default. The header control can override it. */
+:root {
+  color-scheme: light dark;
+  --theme-panel: #fdfdf9;
+  --theme-panel-border: #dcdfd4;
+  --theme-action: #365d45;
+  --theme-action-ink: #fdfdf9;
+  --theme-hover: #e5ebd9;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@supports (color: light-dark(white, black)) {
+  :root {
+    --paper: light-dark(#f7f7f0, #171e19);
+    --ink: light-dark(#242d27, #eef2e8);
+    --muted: light-dark(#636b61, #b5c0b1);
+    --green: light-dark(#365d45, #bedb9f);
+    --line: light-dark(#dcdfd4, #364235);
+    --sage: light-dark(#e9eddf, #29372b);
+    --white: light-dark(#fdfdf9, #212b23);
+    --border: light-dark(#dedfd5, #364235);
+    --theme-panel: light-dark(#fdfdf9, #242d26);
+    --theme-panel-border: light-dark(#dcdfd4, #434e40);
+    --theme-action: var(--green);
+    --theme-action-ink: light-dark(#fdfdf9, #17251b);
+    --theme-hover: light-dark(#e5ebd9, #354434);
+    --theme-action-hover: light-dark(#284b35, #cce6b1);
+    --theme-focus: light-dark(#70874b, #b6d595);
+    --theme-experience: light-dark(#edf0e6, #1e291f);
+    --theme-writing: light-dark(#f0f1e9, #1b241d);
+    --theme-contact: light-dark(#233e35, #152a22);
+    --theme-contact-line: light-dark(#597354, #425e48);
+  }
+
+  html {
+    background-color: var(--paper);
+  }
+
+  ::selection {
+    background: var(--lime);
+    color: #242d27;
+  }
+
+  :focus-visible {
+    outline-color: var(--theme-focus);
+  }
+
+  .skip-link {
+    color: light-dark(#fff, #17251b);
+  }
+
+  .button-primary {
+    color: var(--theme-action-ink);
+  }
+
+  .button-primary:hover {
+    background-color: var(--theme-action-hover);
+  }
+
+  .site-header {
+    background: light-dark(rgb(247 247 240 / 96%), rgb(23 30 25 / 95%));
+  }
+
+  .location-divider {
+    color: light-dark(#9ba38f, #8ca487);
+  }
+
+  /* Give the Lif artwork a darker stage while keeping the real app preview intact. */
+  .hero-visual {
+    background: light-dark(#e4e9db, #25342a);
+  }
+
+  .visual-topline {
+    color: light-dark(#56634d, #b5c6ac);
+  }
+
+  .visual-caption {
+    color: light-dark(#59634f, #b5c6ac);
+  }
+
+  .orb {
+    border-color: light-dark(#c8d4ba, #4c6348);
+  }
+
+  .orb-two {
+    background: light-dark(#d6e2c4, #344b37);
+  }
+
+  .phone-preview {
+    border-color: light-dark(#fff, #a1b39c);
+    box-shadow: 8px 18px 28px light-dark(#3f53352b, #060d0980);
+  }
+
+  .floating-app {
+    background: light-dark(#fffef8, #27362a);
+    border-color: light-dark(#fff, #4b6551);
+    box-shadow: 0 7px 26px light-dark(#3e54341c, #060d0966);
+  }
+
+  .code-note {
+    background: light-dark(#304c3c, #17271e);
+    box-shadow: 0 8px 16px light-dark(#233c2c1a, #060d0955);
+  }
+
+  .filter-group {
+    background: light-dark(#eceee4, #253128);
+  }
+
+  .filter-group button[aria-pressed="true"] {
+    background: light-dark(#242d27, #bedb9f);
+    color: var(--theme-action-ink);
+  }
+
+  .filter-group button:hover:not([aria-pressed="true"]) {
+    background: light-dark(#e0e5d4, #374838);
+  }
+
+  .project-card:hover {
+    border-color: light-dark(#b3c3a5, #668063);
+    box-shadow: 0 5px 18px light-dark(#26392806, #080e0a55);
+  }
+
+  .lif-art {
+    background: light-dark(#e7eddf, #293c30);
+  }
+
+  .art-caption {
+    color: light-dark(#59694e, #b9d0b2);
+  }
+
+  .lif-work-screen {
+    border-color: light-dark(#fff, #a1b39c);
+    box-shadow: 0 8px 24px light-dark(#40543b26, #0c171177);
+  }
+
+  .art-badge {
+    background: light-dark(#e7eddfde, #25382c);
+    border-color: light-dark(#bfccb2, #547355);
+    color: light-dark(#425239, #d2e5bc);
+  }
+
+  .canvas-art {
+    background: light-dark(#f0eadd, #382f28);
+  }
+
+  .canvas-heading {
+    color: light-dark(#716957, #ddc9af);
+  }
+
+  .canvas-mark {
+    color: light-dark(#6e614c, #e8d7bd);
+  }
+
+  .canvas-mark>span {
+    color: light-dark(#af8c56, #dfb778);
+  }
+
+  .handwritten {
+    border-color: light-dark(#bcb09a, #8a745a);
+    background: light-dark(#f9f6ef, #4b3d30);
+  }
+
+  .handwritten,
+  .recognized {
+    color: light-dark(#746249, #f0d9b7);
+  }
+
+  .recognition-demo>.icon {
+    color: light-dark(#918064, #d2b894);
+  }
+
+  .canvas-footnote {
+    color: light-dark(#766b59, #d8c4a9);
+  }
+
+  .canvas-art .art-badge {
+    background: light-dark(#f4eee3, #433629);
+    border-color: light-dark(#d3c7b2, #816b53);
+    color: light-dark(#76644b, #e6d1b6);
+  }
+
+  .noksha-art {
+    color: light-dark(#6d567a, #d9bde4);
+    background: light-dark(#eee7f1, #3a3041);
+  }
+
+  .tags span {
+    background: light-dark(#f0f2e9, #29372b);
+    border-color: light-dark(#e3e7d9, #3c4c3c);
+    color: light-dark(#5b6752, #c3cfba);
+  }
+
+  .experience-section {
+    background: var(--theme-experience);
+    border-block-color: light-dark(#e3e7db, #364235);
+  }
+
+  .career-line {
+    background: light-dark(#b6c79f, #67835d);
+  }
+
+  .timeline {
+    border-left-color: light-dark(#c9d3bd, #566b50);
+  }
+
+  .timeline-item::before {
+    border-color: var(--theme-experience);
+    background: light-dark(#587342, #b6d595);
+  }
+
+  .timeline-item+.timeline-item {
+    border-top-color: light-dark(#d5ddca, #394b39);
+  }
+
+  .current-badge {
+    color: light-dark(#496138, #d0e3b7);
+    background: light-dark(#e0e8d4, #334832);
+    border-color: light-dark(#d0debe, #526b49);
+  }
+
+  .timeline-subtitle {
+    color: light-dark(#58664f, #c0cca9);
+  }
+
+  .timeline ul {
+    color: light-dark(#626c5b, #b5c0b1);
+  }
+
+  .timeline .tags span {
+    background: light-dark(#e4eadb, #293b2d);
+    border-color: light-dark(#d5dec9, #455945);
+  }
+
+  .about-portrait {
+    background: light-dark(#e5e5d6, #2b392d);
+  }
+
+  .writing-section {
+    background: var(--theme-writing);
+  }
+
+  .writing-topic-links a {
+    border-color: light-dark(#ccd4c1, #4d634a);
+  }
+
+  .writing-topic-links a:hover,
+  .tutorial-card:hover {
+    background: var(--theme-hover);
+    border-color: light-dark(#a9bc96, #647d5c);
+  }
+
+  .article-list {
+    border-top-color: light-dark(#d5d9cc, #3c4d3b);
+  }
+
+  .article-row {
+    border-bottom-color: light-dark(#d5d9cc, #3c4d3b);
+  }
+
+  .article-arrow {
+    border-color: light-dark(#cfd7c4, #52664d);
+  }
+
+  .article-row:hover .article-arrow {
+    color: #242d27;
+  }
+
+  .tutorial-card {
+    border-color: light-dark(#d0d8c5, #485d48);
+  }
+
+  .tutorial-card:hover {
+    background: light-dark(#e9efdf, #354434);
+  }
+
+  .contact-section {
+    background: radial-gradient(ellipse at 0 15%, light-dark(#3c5b424d, #43694942), transparent 60%), var(--theme-contact);
+  }
+
+  .contact-mail-card {
+    background: light-dark(#f6f6eb, #26392d);
+    color: light-dark(#233e35, #edf4e6);
+    border-color: light-dark(#f6f6eb, #527054);
+    box-shadow: 0 18px 50px light-dark(#142b201a, #0a141064);
+  }
+
+  .contact-mail-icon {
+    background: light-dark(#e3ead6, #3b533a);
+    color: var(--theme-action);
+  }
+
+  .contact-email-address {
+    color: inherit;
+  }
+
+  .contact-email-button {
+    color: light-dark(#f8faef, #17251b);
+    background: var(--theme-action);
+    border-color: var(--theme-action);
+  }
+
+  .contact-email-button:hover {
+    background: var(--theme-action-hover);
+    border-color: var(--theme-action-hover);
+  }
+
+  #copy-email {
+    border-color: light-dark(#c7d1ba, #597454);
+    background: light-dark(#edf0e3, #304733);
+    color: light-dark(#36543d, #e0eccf);
+  }
+
+  #copy-email:hover {
+    background: light-dark(#e0e8d2, #3e593d);
+    border-color: light-dark(#a5b794, #8bac7e);
+  }
+
+  .contact-mail-card .copy-status {
+    color: light-dark(#506149, #c2d3b9);
+  }
+
+  .contact-section .contact-mail-card :focus-visible {
+    outline-color: var(--theme-action);
+  }
+
+  .contact-method {
+    background: light-dark(#2c493d, #22392c);
+    border-color: light-dark(#607c616e, #425a44);
+  }
+
+  .contact-method-wide {
+    background: light-dark(#35543f, #2a4532);
+    border-color: light-dark(#91b27380, #587653);
+  }
+
+  .contact-method:hover {
+    background: light-dark(#38563f, #35543e);
+    border-color: #9bb586;
+  }
+
+  .contact-secondary {
+    border-top-color: var(--theme-contact-line);
+  }
+
+  .site-footer {
+    background: var(--theme-contact);
+  }
+
+  .footer-inner {
+    border-top-color: light-dark(#456050, #365345);
+  }
+}

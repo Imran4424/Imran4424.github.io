@@ -3,7 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f7f0">
+  <meta id="portfolio-theme-color" name="theme-color" content="#f7f7f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171e19" media="(prefers-color-scheme: dark)">
+  <script>
+    // Apply a saved override before the page is painted.
+    try {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        document.documentElement.dataset.theme = savedTheme;
+        const themeColor = document.getElementById('portfolio-theme-color');
+        themeColor.content = savedTheme === 'dark' ? '#171e19' : '#f7f7f0';
+        themeColor.removeAttribute('media');
+      }
+    } catch {
+      // The site can still follow the device appearance when storage is unavailable.
+    }
+  </script>
   <title>Imran Hossain — Senior iOS Software Engineer</title>
   <meta name="description" content="Shah Md Imran Hossain, Senior iOS Software Engineer at Samsung R&D Bangladesh. Seven years building thoughtful experiences with Swift, SwiftUI, and UIKit.">
   <link rel="canonical" href="https://imran4424.github.io/">
@@ -15,9 +30,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261109-whatsapp">
-  <link rel="stylesheet" href="css/responsive.css?v=20261109-whatsapp">
-  <script src="js/script.js" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261124-motion">
+  <link rel="stylesheet" href="css/responsive.css?v=20261124-appearance">
+  <link rel="stylesheet" href="css/theme.css?v=20261124-appearance">
+  <link rel="stylesheet" href="css/motion.css?v=20261124-motion">
+  <script src="js/script.js?v=20261124-appearance" defer></script>
+  <script src="js/motion.js?v=20261124-motion" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,10 +50,19 @@
     <symbol id="phone" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2c0 8.8 7.2 16 16 16a2 2 0 0 0 2-2v-3l-5-2-2 2a12 12 0 0 1-6-6l2-2-2-5Z"/></symbol>
     <symbol id="chat" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 10h8m-8 4h5"/></symbol>
     <symbol id="spark" viewBox="0 0 24 24"><path d="m12 2 2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8Z"/></symbol>
+    <symbol id="replay" viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 1 2.5 7M3 5v6h6"/></symbol>
+    <symbol id="appearance-system" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10 18h4"/></symbol>
+    <symbol id="appearance-light" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4m0-14.2-1.4 1.4M6.3 17.7l-1.4 1.4"/></symbol>
+    <symbol id="appearance-dark" viewBox="0 0 24 24"><path d="M20.5 15.3A8.7 8.7 0 0 1 8.7 3.5a8.8 8.8 0 1 0 11.8 11.8Z"/></symbol>
   </defs></svg>
   <header class="site-header">
     <div class="container header-inner">
       <a class="wordmark" href="#home" aria-label="Imran Hossain, home">imran<span class="wordmark-dot">.</span><span class="wordmark-label">ENGINEER & MAKER</span></a>
+      <div class="appearance-control" id="appearance-control" role="group" aria-label="Color theme" data-mode="system" hidden>
+        <button type="button" data-appearance="system" aria-pressed="true" aria-label="Use device theme" title="Use device theme"><svg class="icon" aria-hidden="true"><use href="#appearance-system"/></svg><span>System</span></button>
+        <button type="button" data-appearance="light" aria-pressed="false" aria-label="Use light mode" title="Use light mode"><svg class="icon" aria-hidden="true"><use href="#appearance-light"/></svg><span>Light</span></button>
+        <button type="button" data-appearance="dark" aria-pressed="false" aria-label="Use dark mode" title="Use dark mode"><svg class="icon" aria-hidden="true"><use href="#appearance-dark"/></svg><span>Dark</span></button>
+      </div>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
       <nav class="site-nav" id="primary-nav" aria-label="Main navigation">
         <a data-nav href="#work">Work</a><a data-nav href="#experience">Experience</a><a data-nav href="#about">About</a><a data-nav href="#writing">Writing</a>
@@ -54,7 +81,13 @@
         <div class="hero-location"><span class="location-dot" aria-hidden="true"></span> Based in Dhaka, Bangladesh <span class="location-divider">/</span> Building for everyday life</div>
       </div>
       <div class="hero-visual">
-        <div class="visual-topline"><span>A LITTLE OF WHAT I BUILD</span><svg class="icon" aria-hidden="true"><use href="#spark"/></svg></div>
+        <div class="visual-topline">
+          <span>A LITTLE OF WHAT I BUILD</span>
+          <button class="hero-replay" type="button" aria-label="Replay animation" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#replay"/></svg> Replay
+          </button>
+          <svg class="icon hero-spark" aria-hidden="true"><use href="#spark"/></svg>
+        </div>
         <div class="orb orb-one"></div><div class="orb orb-two"></div>
         <div class="phone-preview"><img src="assets/images/lif-home.jpg" width="600" height="1299" alt="Lif app showing hydration, focus, eye rest, and sleep routines" fetchpriority="high"></div>
         <div class="floating-app"><img src="assets/images/lif-icon.jpg" width="48" height="48" alt=""><span><strong>Lif</strong><small>Small habits. Better days.</small></span><span class="floating-spark" aria-hidden="true">✦</span></div>
@@ -112,7 +145,24 @@
     <section class="experience-section" id="experience" aria-labelledby="experience-title"><div class="container section experience-layout">
       <div class="experience-intro"><p class="eyebrow section-index">02 / EXPERIENCE</p><h2 id="experience-title">Depth that comes<br>from <em>doing.</em></h2><p>From connecting a home to supporting better health. Building, improving, and taking care of software at Samsung R&D Institute Bangladesh since 2019.</p><a class="text-link" href="assets/documents/Shah_Md_Imran_Hossain_iOS_CV.pdf" download>Get the full CV <svg class="icon" aria-hidden="true"><use href="#download"/></svg></a><div class="career-note"><span class="career-line"></span><span>Software Engineer → Senior Software Engineer<br><strong>Promoted in March 2022</strong></span></div></div>
       <div class="timeline"><article class="timeline-item"><div class="timeline-top"><span class="micro-label">OCT 2025 — PRESENT</span><span class="current-badge">Current focus</span></div><h3>OneSamsungHealth</h3><p class="timeline-subtitle">Health Monitor & SamsungAnalytics</p><ul><li>Modernized SamsungAnalytics from Objective-C to Swift, repaired server communication, and delivered a documented wrapper adopted by 120 iOS engineers.</li><li>Built Sleep Apnea and Blood Pressure onboarding, history, and breathing-disruption views, with shared SwiftUI components.</li><li>Implemented Galaxy Ring data parsing, GRDB persistence, and networking with URLSession and Swift Concurrency.</li><li>Resolved 25+ PLM defects and 50+ UX specification issues against documented health-product requirements.</li><li>Mentored two iOS engineers in implementation, code review, and reusable architecture.</li></ul><div class="tags"><span>SwiftUI</span><span>async/await</span><span>GRDB</span></div></article>
-      <article class="timeline-item"><div class="timeline-top"><span class="micro-label">NOV 2019 — SEP 2025</span></div><h3>SmartThings iOS</h3><p class="timeline-subtitle">Device onboarding & discovery</p><ul><li>Built onboarding and discovery flows across QR scanning, device verification, Wi-Fi setup, ownership transfer, registration, and recovery.</li><li>Integrated Samsung and third-party devices over OCF, BLE, Matter, and Wi-Fi, with localized experiences.</li><li>Maintained Montage Asset Management and Catalog integrations for localized images, video, text, and device data.</li><li>Resolved 1,650+ product issues and documented recurring onboarding solutions.</li><li>Mentored five engineers, introduced unit testing and TDD, and shared learning sessions on dependency injection and localization.</li></ul><div class="tags"><span>Swift</span><span>UIKit</span><span>IoT</span><span>XCTest</span></div></article></div>
+      <article class="timeline-item">
+        <div class="timeline-top"><span class="micro-label">NOV 2019 — SEP 2025</span></div>
+        <h3>SmartThings iOS</h3>
+        <div class="timeline-details">
+          <p class="timeline-subtitle">Device onboarding &amp; discovery</p>
+          <a class="text-link timeline-app-link" href="https://apps.apple.com/us/app/smartthings/id1222822904" target="_blank" rel="noopener noreferrer" aria-label="View SmartThings on the App Store">
+            View on the App Store <svg class="icon" aria-hidden="true"><use href="#arrow-up-right"/></svg>
+          </a>
+        </div>
+        <ul>
+          <li>Built onboarding and discovery flows across QR scanning, device verification, Wi-Fi setup, ownership transfer, registration, and recovery.</li>
+          <li>Integrated Samsung and third-party devices over OCF, BLE, Matter, and Wi-Fi, with localized experiences.</li>
+          <li>Maintained Montage Asset Management and Catalog integrations for localized images, video, text, and device data.</li>
+          <li>Resolved 1,650+ product issues and documented recurring onboarding solutions.</li>
+          <li>Mentored five engineers, introduced unit testing and TDD, and shared learning sessions on dependency injection and localization.</li>
+        </ul>
+        <div class="tags"><span>Swift</span><span>UIKit</span><span>IoT</span><span>XCTest</span></div>
+      </article></div>
     </div></section>
     <section class="section container about-section" id="about" aria-labelledby="about-title">
       <div class="about-portrait"><img src="assets/images/imran-hossain.jpg" width="1200" height="1598" alt="Portrait of Shah Md Imran Hossain" loading="lazy"><div class="portrait-caption"><span>SHAH MD IMRAN HOSSAIN</span><span>DHAKA, BD ↗</span></div><span class="portrait-note">Engineer by profession.<br><em>Curious by nature.</em></span></div>

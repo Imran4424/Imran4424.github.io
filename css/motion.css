@@ -1,0 +1,157 @@
+.visual-topline {
+  z-index: 2;
+  top: 11px;
+  min-height: 44px;
+  gap: 12px;
+}
+
+.hero-replay {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 7px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--theme-panel-border, var(--line));
+  border-radius: 999px;
+  background: var(--theme-panel, var(--white));
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.hero-replay:hover {
+  background: var(--theme-hover, var(--sage));
+}
+
+.hero-replay .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.hero-replay:not([hidden]) + .hero-spark {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --motion-settle: cubic-bezier(.22, .82, .3, 1.12);
+    --motion-response: cubic-bezier(.2, .7, .3, 1);
+  }
+
+  :is(.button, .menu-toggle, .appearance-control button, .nav-contact, .filter-group button, .hero-replay,
+      .contact-email-button, #copy-email, .writing-topic-links a) {
+    transition: scale 260ms var(--motion-settle), transform 260ms var(--motion-settle),
+      background-color 180ms var(--motion-response), color 180ms var(--motion-response),
+      border-color 180ms var(--motion-response);
+  }
+
+  :is(.button, .menu-toggle, .appearance-control button, .nav-contact, .filter-group button, .hero-replay,
+      .contact-email-button, #copy-email, .writing-topic-links a):active {
+    scale: .94;
+    transition-duration: 100ms;
+  }
+
+  :is(.project-card, .tutorial-card, .contact-method) {
+    transition: translate 300ms var(--motion-settle), scale 260ms var(--motion-settle),
+      border-color 180ms var(--motion-response), background-color 180ms var(--motion-response),
+      box-shadow 230ms var(--motion-response);
+  }
+
+  .project-card:has(a:active), :is(.tutorial-card, .contact-method):active {
+    scale: .97;
+    transition-duration: 100ms;
+  }
+
+  .text-link .icon {
+    transition: transform 240ms var(--motion-settle);
+  }
+
+  .project-card h3 .icon,
+  .tutorial-cta .icon,
+  .contact-method-arrow,
+  .article-arrow .icon {
+    transition: translate 240ms var(--motion-settle);
+  }
+
+  .is-revealing:not(:focus-within) {
+    animation: portfolio-reveal 600ms var(--motion-settle) backwards;
+  }
+
+  .project-card.is-filtering:not(:focus-within) {
+    animation: portfolio-filter-in 520ms var(--motion-settle) var(--filter-delay, 0ms) backwards;
+  }
+
+  .hero-visual.is-playing .phone-preview {
+    animation: portfolio-phone-spring 860ms both;
+  }
+
+  .hero-visual.is-playing .floating-app {
+    --badge-enter-x: -38px;
+    animation: portfolio-badge-spring 690ms 130ms backwards;
+  }
+
+  .hero-visual.is-playing .code-note {
+    --badge-enter-x: 32px;
+    animation: portfolio-badge-spring 690ms 210ms backwards;
+  }
+
+  @keyframes portfolio-reveal {
+    from { translate: 0 26px; opacity: .72; }
+    to { translate: 0 0; opacity: 1; }
+  }
+
+  @keyframes portfolio-filter-in {
+    from { translate: 0 24px; scale: .96; opacity: .62; }
+    to { translate: 0 0; scale: 1; opacity: 1; }
+  }
+
+  @keyframes portfolio-phone-spring {
+    0% { translate: 0 74px; scale: .86; opacity: .24; animation-timing-function: cubic-bezier(.18, .72, .3, 1); }
+    63% { translate: 0 -8px; scale: 1.026; opacity: 1; animation-timing-function: ease-in-out; }
+    83% { translate: 0 2px; scale: .995; animation-timing-function: ease-out; }
+    100% { translate: 0 0; scale: 1; opacity: 1; }
+  }
+
+  @keyframes portfolio-badge-spring {
+    0% { translate: var(--badge-enter-x) 25px; scale: .9; opacity: .25; animation-timing-function: cubic-bezier(.18, .72, .3, 1); }
+    67% { translate: 0 -4px; scale: 1.025; opacity: 1; animation-timing-function: ease-out; }
+    100% { translate: 0 0; scale: 1; opacity: 1; }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-card:has(a:hover), :is(.tutorial-card, .contact-method):hover {
+    translate: 0 -5px;
+  }
+
+  .project-card h3 a:hover .icon,
+  .tutorial-card:hover .tutorial-cta .icon,
+  .contact-method:hover .contact-method-arrow,
+  .article-row:hover .article-arrow .icon {
+    translate: 3px -3px;
+  }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .js .site-nav.is-open {
+    transform-origin: top center;
+    animation: portfolio-menu-enter 440ms var(--motion-settle) backwards;
+  }
+
+  .js .site-nav.is-open:focus-within {
+    animation: none;
+  }
+
+  @keyframes portfolio-menu-enter {
+    from { translate: 0 -20px; scale: .96; opacity: .55; }
+    to { translate: 0 0; scale: 1; opacity: 1; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button-primary:hover,
+  .text-link:hover .icon {
+    transform: none;
+  }
+}
