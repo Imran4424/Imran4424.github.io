@@ -1,4 +1,15 @@
 /* System appearance is the default. The header control can override it. */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition {
+    pointer-events: none;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: 280ms;
+    animation-timing-function: ease-in-out;
+  }
+}
+
 :root {
   color-scheme: light dark;
   --theme-panel: #fdfdf9;

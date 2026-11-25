@@ -41,25 +41,25 @@
 
   :is(.button, .menu-toggle, .appearance-control button, .nav-contact, .filter-group button, .hero-replay,
       .contact-email-button, #copy-email, .writing-topic-links a) {
-    transition: scale 260ms var(--motion-settle), transform 260ms var(--motion-settle),
+    transition: scale 320ms var(--motion-settle), transform 280ms var(--motion-settle),
       background-color 180ms var(--motion-response), color 180ms var(--motion-response),
       border-color 180ms var(--motion-response);
   }
 
   :is(.button, .menu-toggle, .appearance-control button, .nav-contact, .filter-group button, .hero-replay,
       .contact-email-button, #copy-email, .writing-topic-links a):active {
-    scale: .94;
-    transition-duration: 100ms;
+    scale: .93;
+    transition-duration: 90ms;
   }
 
   :is(.project-card, .tutorial-card, .contact-method) {
-    transition: translate 300ms var(--motion-settle), scale 260ms var(--motion-settle),
+    transition: translate 330ms var(--motion-settle), scale 305ms var(--motion-settle),
       border-color 180ms var(--motion-response), background-color 180ms var(--motion-response),
       box-shadow 230ms var(--motion-response);
   }
 
   .project-card:has(a:active), :is(.tutorial-card, .contact-method):active {
-    scale: .97;
+    scale: .965;
     transition-duration: 100ms;
   }
 
@@ -75,52 +75,93 @@
   }
 
   .is-revealing:not(:focus-within) {
-    animation: portfolio-reveal 600ms var(--motion-settle) backwards;
+    animation: portfolio-reveal 580ms var(--motion-settle) backwards;
   }
 
   .project-card.is-filtering:not(:focus-within) {
-    animation: portfolio-filter-in 520ms var(--motion-settle) var(--filter-delay, 0ms) backwards;
+    animation: portfolio-filter-in 560ms var(--motion-settle) var(--filter-delay, 0ms) backwards;
+  }
+
+  .project-card.is-reflowing:not(:focus-within) {
+    animation: portfolio-filter-move 545ms var(--motion-settle) backwards;
+  }
+
+  .hero-visual.is-playing .orb-one {
+    --orbit-start: 1.13;
+    animation: portfolio-orbit 850ms var(--motion-response) backwards;
+  }
+
+  .hero-visual.is-playing .orb-two {
+    --orbit-start: .7;
+    animation: portfolio-orbit 760ms var(--motion-settle) 40ms backwards;
   }
 
   .hero-visual.is-playing .phone-preview {
-    animation: portfolio-phone-spring 860ms both;
+    animation: portfolio-phone-spring 830ms 65ms backwards;
   }
 
   .hero-visual.is-playing .floating-app {
-    --badge-enter-x: -38px;
-    animation: portfolio-badge-spring 690ms 130ms backwards;
+    --badge-enter-x: -44px;
+    animation: portfolio-badge-spring 690ms 200ms backwards;
   }
 
   .hero-visual.is-playing .code-note {
-    --badge-enter-x: 32px;
-    animation: portfolio-badge-spring 690ms 210ms backwards;
+    --badge-enter-x: 38px;
+    animation: portfolio-badge-spring 690ms 290ms backwards;
   }
 
   @keyframes portfolio-reveal {
-    from { translate: 0 26px; opacity: .72; }
+    from { translate: 0 30px; opacity: .7; }
     to { translate: 0 0; opacity: 1; }
   }
 
   @keyframes portfolio-filter-in {
-    from { translate: 0 24px; scale: .96; opacity: .62; }
+    from { translate: 0 32px; scale: .95; opacity: .58; }
     to { translate: 0 0; scale: 1; opacity: 1; }
   }
 
+  @keyframes portfolio-filter-move {
+    from { translate: var(--filter-start-x, 0px) var(--filter-start-y, 0px); }
+    to { translate: 0 0; }
+  }
+
+  @keyframes portfolio-orbit {
+    from { scale: var(--orbit-start); opacity: .24; }
+    to { scale: 1; opacity: 1; }
+  }
+
   @keyframes portfolio-phone-spring {
-    0% { translate: 0 74px; scale: .86; opacity: .24; animation-timing-function: cubic-bezier(.18, .72, .3, 1); }
-    63% { translate: 0 -8px; scale: 1.026; opacity: 1; animation-timing-function: ease-in-out; }
-    83% { translate: 0 2px; scale: .995; animation-timing-function: ease-out; }
+    0% { translate: 0 92px; scale: .82; opacity: .18; animation-timing-function: cubic-bezier(.18, .72, .3, 1); }
+    61% { translate: 0 -10px; scale: 1.033; opacity: 1; animation-timing-function: ease-in-out; }
+    82% { translate: 0 3px; scale: .994; animation-timing-function: ease-out; }
     100% { translate: 0 0; scale: 1; opacity: 1; }
   }
 
   @keyframes portfolio-badge-spring {
-    0% { translate: var(--badge-enter-x) 25px; scale: .9; opacity: .25; animation-timing-function: cubic-bezier(.18, .72, .3, 1); }
-    67% { translate: 0 -4px; scale: 1.025; opacity: 1; animation-timing-function: ease-out; }
+    0% { translate: var(--badge-enter-x) 30px; scale: .88; opacity: .2; animation-timing-function: cubic-bezier(.18, .72, .3, 1); }
+    66% { translate: 0 -5px; scale: 1.034; opacity: 1; animation-timing-function: ease-in-out; }
+    84% { translate: 0 1px; scale: .995; animation-timing-function: ease-out; }
     100% { translate: 0 0; scale: 1; opacity: 1; }
   }
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-visual :is(.orb-one, .orb-two, .phone-preview, .floating-app, .code-note) {
+    translate: calc(var(--hero-drift-x, 0px) * var(--drift-depth))
+      calc(var(--hero-drift-y, 0px) * var(--drift-depth));
+    transition: translate 460ms var(--motion-settle);
+  }
+
+  .hero-visual.is-tracking :is(.orb-one, .orb-two, .phone-preview, .floating-app, .code-note) {
+    transition-duration: 190ms;
+  }
+
+  .hero-visual .orb-one { --drift-depth: -.4; }
+  .hero-visual .orb-two { --drift-depth: -.25; }
+  .hero-visual .phone-preview { --drift-depth: .58; }
+  .hero-visual .floating-app { --drift-depth: 1; }
+  .hero-visual .code-note { --drift-depth: 1.15; }
+
   .project-card:has(a:hover), :is(.tutorial-card, .contact-method):hover {
     translate: 0 -5px;
   }
@@ -136,16 +177,30 @@
 @media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
   .js .site-nav.is-open {
     transform-origin: top center;
-    animation: portfolio-menu-enter 440ms var(--motion-settle) backwards;
+    animation: portfolio-menu-enter 435ms var(--motion-settle) backwards;
   }
 
   .js .site-nav.is-open:focus-within {
     animation: none;
   }
 
+  .js .site-nav.is-open:not(:focus-within) a {
+    animation: portfolio-menu-link 340ms var(--motion-settle) var(--menu-link-delay, 45ms) backwards;
+  }
+
+  .site-nav a:nth-child(2) { --menu-link-delay: 70ms; }
+  .site-nav a:nth-child(3) { --menu-link-delay: 95ms; }
+  .site-nav a:nth-child(4) { --menu-link-delay: 120ms; }
+  .site-nav a:nth-child(5) { --menu-link-delay: 145ms; }
+
   @keyframes portfolio-menu-enter {
     from { translate: 0 -20px; scale: .96; opacity: .55; }
     to { translate: 0 0; scale: 1; opacity: 1; }
+  }
+
+  @keyframes portfolio-menu-link {
+    from { translate: 0 -9px; opacity: .55; }
+    to { translate: 0 0; opacity: 1; }
   }
 }
 

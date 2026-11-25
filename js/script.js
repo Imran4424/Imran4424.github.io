@@ -9,6 +9,11 @@
 
     const root = document.documentElement;
     const buttons = control.querySelectorAll("[data-appearance]");
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const resolvedTheme = (mode) => mode === "system" ? (systemDark.matches ? "dark" : "light") : mode;
+    let selectedMode = root.dataset.theme || "system";
+    let themeTransition;
 
     const setAppearance = (mode) => {
       if (mode === "system") {
@@ -27,13 +32,30 @@
       });
     };
 
-    setAppearance(root.dataset.theme || "system");
+    setAppearance(selectedMode);
     control.hidden = false;
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
         const mode = button.dataset.appearance;
-        setAppearance(mode);
+        if (mode === selectedMode) return;
+        selectedMode = mode;
+        themeTransition?.skipTransition();
+        if (document.startViewTransition && !reducedMotion.matches &&
+            resolvedTheme(mode) !== resolvedTheme(control.dataset.mode)) {
+          const transition = document.startViewTransition(() => {
+            if (selectedMode === mode) setAppearance(mode);
+          });
+          themeTransition = transition;
+          transition.ready.catch(() => {
+            // A newer choice can skip the crossfade before it is ready.
+          });
+          transition.finished.then(() => {
+            if (themeTransition === transition) themeTransition = undefined;
+          });
+        } else {
+          setAppearance(mode);
+        }
         try {
           if (mode === "system") localStorage.removeItem("portfolio-theme");
           else localStorage.setItem("portfolio-theme", mode);
@@ -47,6 +69,7 @@
   function initPortfolio() {
     initAppearance();
 
+    const wordmark = document.querySelector(".wordmark");
     const menuToggle = document.querySelector(".menu-toggle");
     const navigation = document.getElementById("primary-nav");
 
@@ -78,12 +101,17 @@
       });
 
       const desktop = window.matchMedia("(min-width: 761px)");
-      const resetDesktopMenu = (event) => {
+      const updateMenuLayout = (event) => {
+        // Keep keyboard order aligned with the desktop and mobile header layouts.
+        const precedingControl = event.matches ? wordmark : menuToggle;
+        if (precedingControl && precedingControl.nextElementSibling !== navigation) {
+          precedingControl.after(navigation);
+        }
         if (event.matches) setMenuOpen(false);
       };
-      if (desktop.addEventListener) desktop.addEventListener("change", resetDesktopMenu);
-      else desktop.addListener(resetDesktopMenu);
-      resetDesktopMenu(desktop);
+      if (desktop.addEventListener) desktop.addEventListener("change", updateMenuLayout);
+      else desktop.addListener(updateMenuLayout);
+      updateMenuLayout(desktop);
     }
 
     const filterControls = document.getElementById("project-filters");
@@ -104,6 +132,7 @@
           const filter = button.dataset.filter;
           if (!["all", "ios", "android"].includes(filter) || button.getAttribute("aria-pressed") === "true") return;
 
+          projectGrid?.dispatchEvent(new Event("portfolio:before-filter"));
           let visibleCount = 0;
           projects.forEach((project) => {
             const visible = filter === "all" || project.dataset.category === filter;
