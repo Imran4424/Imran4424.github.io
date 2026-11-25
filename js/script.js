@@ -74,12 +74,15 @@
     const navigation = document.getElementById("primary-nav");
 
     if (menuToggle && navigation) {
+      const desktop = window.matchMedia("(min-width: 761px)");
       const setMenuOpen = (open) => {
         menuToggle.setAttribute("aria-expanded", String(open));
         navigation.classList.toggle("is-open", open);
+        navigation.inert = !desktop.matches && !open;
       };
 
       menuToggle.addEventListener("click", () => {
+        navigation.classList.add("has-menu-motion");
         setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
       });
 
@@ -90,24 +93,28 @@
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
           setMenuOpen(false);
-          menuToggle.focus();
+          menuToggle.focus({ preventScroll: true });
         }
       });
 
-      document.addEventListener("click", (event) => {
-        if (!navigation.contains(event.target) && !menuToggle.contains(event.target)) {
+      const closeMenuOutside = (event) => {
+        if (navigation.classList.contains("is-open") && !navigation.contains(event.target) && !menuToggle.contains(event.target)) {
           setMenuOpen(false);
         }
-      });
+      };
+      document.addEventListener("click", closeMenuOutside);
+      document.addEventListener("focusin", closeMenuOutside);
 
-      const desktop = window.matchMedia("(min-width: 761px)");
       const updateMenuLayout = (event) => {
         // Keep keyboard order aligned with the desktop and mobile header layouts.
         const precedingControl = event.matches ? wordmark : menuToggle;
+        const activeLink = navigation.contains(document.activeElement) ? document.activeElement : null;
         if (precedingControl && precedingControl.nextElementSibling !== navigation) {
           precedingControl.after(navigation);
         }
-        if (event.matches) setMenuOpen(false);
+        navigation.classList.remove("has-menu-motion");
+        setMenuOpen(false);
+        if (activeLink) (event.matches ? activeLink : menuToggle).focus({ preventScroll: true });
       };
       if (desktop.addEventListener) desktop.addEventListener("change", updateMenuLayout);
       else desktop.addListener(updateMenuLayout);

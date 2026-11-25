@@ -95,13 +95,33 @@
   .js .menu-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: 9px 12px; color: var(--ink); background: transparent; font-size: 12px; }
   .appearance-control { margin-inline-start: auto; }
   .appearance-control button { min-width: 44px; min-height: 44px; }
-  .menu-lines { position: relative; display: inline-block; width: 17px; height: 12px; border-top: 1px solid currentColor; border-bottom: 1px solid currentColor; }
-  .menu-lines::before { content: ""; position: absolute; left: 0; top: 5px; width: 17px; border-top: 1px solid currentColor; }
+  .menu-lines { position: relative; display: inline-block; width: 17px; height: 13px; background: linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat; }
+  .menu-lines::before, .menu-lines::after { content: ""; position: absolute; inset: 6px 0 auto; height: 1px; background: currentColor; }
+  .menu-lines::before { translate: 0 -5px; }
+  .menu-lines::after { translate: 0 5px; }
+  .menu-toggle[aria-expanded="true"] .menu-lines { background-size: 0 1px; }
+  .menu-toggle[aria-expanded="true"] .menu-lines::before { translate: 0; rotate: 45deg; }
+  .menu-toggle[aria-expanded="true"] .menu-lines::after { translate: 0; rotate: -45deg; }
   .site-nav { width: 100%; flex-basis: 100%; display: flex; flex-wrap: wrap; margin-inline-start: 0; gap: 8px 23px; padding: 17px 0 0; }
   .site-nav a { min-height: 44px; display: inline-flex; align-items: center; font-size: 14px; }
-  .js .site-nav { display: none; }
-  .js .site-nav.is-open { display: flex; }
   .site-nav .nav-contact { margin-left: 0; }
+  .js .header-inner { position: relative; }
+  .js .site-nav {
+    position: absolute;
+    inset: 100% 0 auto;
+    max-height: calc(100dvh - 85px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: 10px 16px 16px;
+    border: 1px solid var(--line);
+    border-radius: 0 0 12px 12px;
+    background: var(--theme-panel, var(--white));
+    box-shadow: 0 12px 20px rgb(0 0 0 / 12%);
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .js .site-nav.is-open, .js .site-nav:focus-within { visibility: visible; }
+  .js .site-nav.is-open { pointer-events: auto; }
   .hero { padding-top: 48px; padding-bottom: 44px; gap: 36px; }
   .eyebrow { font-size: 10px; letter-spacing: 1.4px; }
   .hero h1 { margin-top: 23px; font-size: clamp(44px, 9.3vw, 66px); letter-spacing: -2.3px; white-space: normal; }

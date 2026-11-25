@@ -143,11 +143,29 @@
     84% { translate: 0 1px; scale: .995; animation-timing-function: ease-out; }
     100% { translate: 0 0; scale: 1; opacity: 1; }
   }
-}
 
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-visual.has-artwork-gesture {
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .has-artwork-gesture .visual-caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: none;
+    padding: 5px 8px;
+    border: 1px solid var(--theme-panel-border, var(--line));
+    border-radius: 999px;
+    background: var(--theme-panel, var(--white));
+    color: var(--ink);
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+
   .hero-visual :is(.orb-one, .orb-two, .phone-preview, .floating-app, .code-note) {
-    translate: calc(var(--hero-drift-x, 0px) * var(--drift-depth))
+    translate: calc(var(--hero-drift-x, 0px) * var(--drift-depth) + var(--hero-swipe, 0px) * var(--swipe-depth))
       calc(var(--hero-drift-y, 0px) * var(--drift-depth));
     transition: translate 460ms var(--motion-settle);
   }
@@ -156,11 +174,24 @@
     transition-duration: 190ms;
   }
 
-  .hero-visual .orb-one { --drift-depth: -.4; }
-  .hero-visual .orb-two { --drift-depth: -.25; }
-  .hero-visual .phone-preview { --drift-depth: .58; }
-  .hero-visual .floating-app { --drift-depth: 1; }
-  .hero-visual .code-note { --drift-depth: 1.15; }
+  .hero-visual.is-swiping :is(.orb-one, .orb-two, .phone-preview, .floating-app, .code-note) {
+    transition: none;
+  }
+
+  .hero-visual .orb-one { --drift-depth: -.4; --swipe-depth: -.23; }
+  .hero-visual .orb-two { --drift-depth: -.25; --swipe-depth: -.38; }
+  .hero-visual .phone-preview {
+    --drift-depth: .58;
+    --swipe-depth: 1;
+    rotate: var(--hero-swipe-tilt, 0deg);
+  }
+  .hero-visual .floating-app { --drift-depth: 1; --swipe-depth: .63; }
+  .hero-visual .code-note { --drift-depth: 1.15; --swipe-depth: 1.12; }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-visual.has-artwork-gesture { cursor: grab; }
+  .hero-visual.has-artwork-gesture:active { cursor: grabbing; }
 
   .project-card:has(a:hover), :is(.tutorial-card, .contact-method):hover {
     translate: 0 -5px;
@@ -175,32 +206,55 @@
 }
 
 @media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .js .site-nav {
+    opacity: 0;
+    translate: 0 -12px;
+    clip-path: inset(0 -24px 100%);
+  }
+
+  .js .site-nav.has-menu-motion {
+    transition: clip-path 230ms var(--motion-response), translate 250ms var(--motion-response),
+      opacity 190ms ease-in, visibility 0s 250ms;
+  }
+
   .js .site-nav.is-open {
-    transform-origin: top center;
-    animation: portfolio-menu-enter 435ms var(--motion-settle) backwards;
+    opacity: 1;
+    translate: 0;
+    clip-path: inset(0 -24px -24px);
   }
 
-  .js .site-nav.is-open:focus-within {
-    animation: none;
+  .js .site-nav.has-menu-motion.is-open {
+    transition: clip-path 360ms var(--motion-response), translate 420ms var(--motion-settle),
+      opacity 180ms ease-out, visibility 0s;
   }
 
-  .js .site-nav.is-open:not(:focus-within) a {
-    animation: portfolio-menu-link 340ms var(--motion-settle) var(--menu-link-delay, 45ms) backwards;
+  .js .site-nav a {
+    translate: 0 -10px;
+    opacity: 0;
+    transition: translate 230ms var(--motion-response), opacity 150ms ease-in;
   }
 
-  .site-nav a:nth-child(2) { --menu-link-delay: 70ms; }
-  .site-nav a:nth-child(3) { --menu-link-delay: 95ms; }
-  .site-nav a:nth-child(4) { --menu-link-delay: 120ms; }
-  .site-nav a:nth-child(5) { --menu-link-delay: 145ms; }
-
-  @keyframes portfolio-menu-enter {
-    from { translate: 0 -20px; scale: .96; opacity: .55; }
-    to { translate: 0 0; scale: 1; opacity: 1; }
+  .js .site-nav.is-open a {
+    translate: 0;
+    opacity: 1;
+    transition: translate 330ms var(--motion-settle) var(--menu-link-delay, 40ms),
+      opacity 210ms ease-out var(--menu-link-delay, 40ms);
   }
 
-  @keyframes portfolio-menu-link {
-    from { translate: 0 -9px; opacity: .55; }
-    to { translate: 0 0; opacity: 1; }
+  .site-nav a:nth-child(2) { --menu-link-delay: 65ms; }
+  .site-nav a:nth-child(3) { --menu-link-delay: 90ms; }
+  .site-nav a:nth-child(4) { --menu-link-delay: 115ms; }
+  .site-nav a:nth-child(5) { --menu-link-delay: 140ms; }
+
+  .js .site-nav.is-open:focus-within,
+  .js .site-nav.is-open:focus-within a {
+    transition: none;
+  }
+
+  .menu-lines { transition: background-size 160ms var(--motion-response); }
+
+  .menu-lines::before, .menu-lines::after {
+    transition: translate 290ms var(--motion-settle), rotate 290ms var(--motion-settle);
   }
 }
 
